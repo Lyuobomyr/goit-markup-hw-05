@@ -4,6 +4,7 @@
   --first-background-color: #ffffff;
   --second-background-color: #2e2f42;
   --accent-color: #4d5ae5;
+  --duration-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ====================================================================== */
@@ -112,6 +113,7 @@ img {
   font-size: 16px;
   line-height: 1.5;
   color: var(--first-color);
+  transition: color var(--duration-function);
 }
 
 .menu-link:hover,
@@ -136,6 +138,7 @@ img {
   font-size: 16px;
   line-height: 1.5;
   color: var(--second-color);
+  transition: color var(--duration-function);
 }
 
 .contact-mail:hover,
@@ -185,18 +188,21 @@ img {
   letter-spacing: 0.04em;
   color: #ffffff;
   background-color: var(--accent-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  transition: background-color var(--duration-function), box-shadow var(--duration-function);
 }
 
 .hero-btn:hover,
 .hero-btn:focus {
-  background-color: var(--accent-color);
-  box-shadow: 0px 4px 4px 0px #00000026;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .hero-btn:active {
   background-color: #404bbf;
   border: 1px solid #404bbf;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 /* ===================================/ HERO================================ */
 
@@ -351,6 +357,7 @@ img {
   fill: #8e8f99;
   border: 1px solid #8e8f99;
   border-radius: 4px;
+  transition: fill var(--duration-function), border-color var(--duration-function);
 }
 
 .customers-link:hover,
@@ -401,6 +408,7 @@ img {
   height: 40px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color var(--duration-function);
 }
 .social-footer-link:hover,
 .social-footer-link:focus {
@@ -442,6 +450,8 @@ img {
   border: 1px solid #e7e9fc;
   border-radius: 4px;
   cursor: pointer;
+  transition: color var(--duration-function), background-color var(--duration-function),
+    border var(--duration-function), box-shadow var(--duration-function);
 }
 
 .filter-btn:hover,
@@ -470,6 +480,7 @@ img {
 .link-portfolio {
   display: block;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
+  transition: box-shadow var(--duration-function);
 }
 .link-portfolio:hover,
 .link-portfolio:focus {
@@ -523,8 +534,63 @@ img {
   top: 0px;
   overflow: auto;
   transform: translate(0, 100%);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--duration-function);
 
   background: #4d5ae5;
 }
 /* ========================================/ Портфоліо================================ */
+
+/* ======================================== Модальне вікно============================ */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity var(--duration-function), visibility var(--duration-function);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  width: 408px;
+  height: 576px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.modal-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color var(--duration-function), box-shadow var(--duration-function),
+    border-color var(--duration-function);
+}
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: #ffffff;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
+  border-color: #ffffff;
+}
+
+/* ========================================/ Модальне вікно=========================== */
